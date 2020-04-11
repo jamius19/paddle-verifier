@@ -1,0 +1,8 @@
+language: java
+
+jdk:
+  - openjdk11
+
+cache:
+  directories:
+    - $HOME/.gradle
