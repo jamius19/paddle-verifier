@@ -4,27 +4,40 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
+/**
+ *
+ */
 public class StringParser {
 
+    /**
+     * Serializes a string {@link Map} to <b>php's</b> equivalent
+     * <code>serialize()</code> function.
+     *
+     * @param value     The {@link Map} to be serialized
+     * @return          The serialized String.
+     */
     public String serialize(Map<String, String> value) {
-        StringBuilder returnString = new StringBuilder();
+        StringBuilder serializedString = new StringBuilder();
 
-        returnString.append("a:").append(value.size()).append(":{");
+        serializedString.append("a:").append(value.size()).append(":{");
 
         value.forEach((key, val) -> {
             // Escape urls
             String valEscaped = URLDecoder.decode(val, StandardCharsets.UTF_8);
 
-            returnString.append(generateInnerValues(key));
-            returnString.append(generateInnerValues(valEscaped));
+            serializedString.append(generateInnerValues(key));
+            serializedString.append(generateInnerValues(valEscaped));
         });
 
-        returnString.append("}");
+        serializedString.append("}");
 
-        return returnString.toString();
+        return serializedString.toString();
     }
 
 
+    /**
+     * Generates the inner values for serialization
+     */
     private String generateInnerValues(String val) {
         return String.format("s:%d:\"%s\";", val.length(), val);
     }
