@@ -1,5 +1,6 @@
 plugins {
     id "java-library"
+    id "jacoco"
 }
 
 group = "com.jamiussiam"
@@ -25,6 +26,21 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+check.dependsOn jacocoTestReport
+
+
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
 }
 
 jar {
