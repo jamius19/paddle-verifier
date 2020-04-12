@@ -61,4 +61,12 @@ class VerifierTest {
 
         assertFalse(verifier.verifyDataWithSignature(postBody, publicKeyString));
     }
+
+    void verifyDataWithSignatureWithoutSignature() {
+        Verifier verifier = new Verifier();
+        String postBody = VerifierTest.postBody.replace("p_signature", "no_signature");
+
+        IllegalArgumentException argumentException = assertThrows(IllegalArgumentException.class,
+                () -> verifier.verifyDataWithSignature(postBody, publicKeyString));
+    }
 }
