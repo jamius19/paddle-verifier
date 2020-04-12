@@ -4,7 +4,7 @@
 
 ## Paddle Webhook Verifier
 
-![Version badge](https://img.shields.io/badge/Maven%20Central-1.0-blue.svg)  [![Build Status](https://travis-ci.com/jamius19/paddle-verifier.svg?branch=master)](https://travis-ci.com/jamius19/paddle-verifier) [![Codecov Status](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg)](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)   [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+![Version badge](https://img.shields.io/badge/Maven%20Central-1.0-blue.svg)  [![Build Status](https://travis-ci.com/jamius19/paddle-verifier.svg?branch=master)](https://travis-ci.com/jamius19/paddle-verifier) [![Codecov Status](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg)](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jamius19/paddle-verifier/issues)   [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jamius19/paddle-verifier/blob/master/LICENSE)
 <br/>
 
 ### What is it?
