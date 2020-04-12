@@ -27,6 +27,7 @@ gradle-app.setting
 !gradle-wrapper.jar
 
 gradle.properties
+secring.gpg
 secret.gpg
 # Cache of project
 .gradletasknamecache

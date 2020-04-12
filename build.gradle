@@ -1,10 +1,75 @@
-plugins {
-    id "java-library"
-    id "jacoco"
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+    }
 }
 
+
+plugins {
+    id 'io.codearte.nexus-staging' version '0.11.0'
+}
+
+apply plugin: 'com.bmuschko.nexus'
+apply plugin: 'java-library'
+apply plugin: 'jacoco'
+
+
+archivesBaseName = 'paddle-verifier'
 group = "com.jamiussiam"
 version = "1.0"
+
+modifyPom {
+    //noinspection GroovyAssignabilityCheck
+    project {
+        name 'paddle-verifier'
+        description 'A Paddle.com webhook verification library for Java.'
+        url 'https://github.com/jamius19/paddle-verifier'
+        inceptionYear '2020'
+
+        scm {
+            url 'https://github.com/jamius19/paddle-verifier.git'
+            connection 'scm:https://github.com/jamius19/paddle-verifier.git'
+            developerConnection 'scm:git:git@github.com:jamius19/paddle-verifier.git'
+        }
+
+        licenses {
+            license {
+                name 'MIT License'
+                url 'https://opensource.org/licenses/MIT'
+                distribution 'repo'
+            }
+        }
+
+        developers {
+            developer {
+                id 'jamius19'
+                name 'Jamius Siam'
+                email 'jamiusiam@gmail.com'
+            }
+        }
+    }
+}
+
+extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+}
+
+nexus {
+    sign = true
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+}
+
+nexusStaging {
+    packageGroup = "com.jamiussiam" //optional if packageGroup == project.getGroup()
+    stagingProfileId = "jamius19" //when not defined will be got from server using "packageGroup"
+}
 
 compileJava {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -27,6 +92,8 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+
 
 jacocoTestReport {
     reports {
