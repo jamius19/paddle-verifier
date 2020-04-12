@@ -1,4 +1,4 @@
-package com.jamiusiam.paddle.verifier;
+package com.jamiussiam.paddle.verifier;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

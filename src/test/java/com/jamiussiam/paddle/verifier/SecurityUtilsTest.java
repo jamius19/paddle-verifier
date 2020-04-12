@@ -1,4 +1,4 @@
-package com.jamiusiam.paddle.verifier;
+package com.jamiussiam.paddle.verifier;
 
 import org.bouncycastle.util.encoders.Base64;
 import org.junit.jupiter.api.BeforeAll;

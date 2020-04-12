@@ -1,4 +1,4 @@
-package com.jamiusiam.paddle.verifier;
+package com.jamiussiam.paddle.verifier;
 
 import java.security.PublicKey;
 import java.security.Signature;
