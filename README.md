@@ -5,7 +5,6 @@
 ## Paddle Webhook Verifier
 
 ![Version badge](https://img.shields.io/badge/Maven%20Central-1.0-blue.svg)  [![Build Status](https://travis-ci.com/jamius19/paddle-verifier.svg?branch=master)](https://travis-ci.com/jamius19/paddle-verifier) [![Codecov Status](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg)](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)   [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
-
 <br/>
 
 ### What is it?
@@ -16,7 +15,7 @@ It's a small utility library for verifying paddle webhooks via Public key and gi
 
 ### How to get it?
 
-##### Maven
+#### Maven
 Include it in your Maven projects.
 ```xml
 <dependency>
@@ -26,13 +25,13 @@ Include it in your Maven projects.
 </dependency>
 ```
   
-##### Gradle
+#### Gradle
 Include it in your Gradle projects.
 ```groovy
 implementation 'com.jamiussiam:paddle-verifier:1.0'
 ```
 
-##### Jar File
+#### Jar File
 You can download the ***.jar** file from release.
 
 <br/>
@@ -58,12 +57,12 @@ boolean isValid = verifier.verifyDataWithSignature(postBody, publicKey);
 
 
 ### Detailed Guide
-##### Method Parameters
+#### Method Parameters
 `postBody` is your POST data from Paddle webhook and it should be in this format,
 ```http request
 alert_id=1688369608&balance_currency=GBP&balance_earnings=438.94&balance_fee=689.32  ....
 ```
-The key value pairs should be separated by `&` and the resources should be [URL Encoded.](https://en.wikipedia.org/wiki/Percent-encoding) (Paddle does this by dafault)
+It should contain `p_signature` key. The key value pairs should be separated by `&` and the post body should be [URL Encoded.](https://en.wikipedia.org/wiki/Percent-encoding) (Paddle does this by dafault)
 
 ---
 
@@ -77,7 +76,7 @@ String publicKey =  "-----BEGIN PUBLIC KEY-----\n" +
 
 <br/>
 
-##### Spring Boot
+#### Spring Boot
 In spring boot, you can define the bean by,
 ```java
 @Bean
@@ -86,13 +85,13 @@ public Verifier getVerifier() {
 }
 ```
 
-Then, inject in inside your `Controller` or `Component` like,
+Then, inject it inside your `Controller` or `Component` like,
 ```java
 @Autowired
 Verifier verifier;
 ```
 
-Finally, use it to verify incoming requests from Paddle,
+Finally, you can use it to verify incoming requests from Paddle,
 
 ```java
 @PostMapping(value = "/webhook/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
