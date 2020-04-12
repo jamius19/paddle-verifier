@@ -44,7 +44,7 @@ public class SecurityUtils {
      * Constructs a base64 encoded<code>byte[]</code> from the POST DATA
      * {@link TreeMap}. Expects an <b>encoded</b> signature.
      *
-     * @param postData  The sorted {@link TreeMap} of POST data containing encoded <code><pre>p_signature</pre></code>
+     * @param postData  The sorted {@link TreeMap} of POST data containing encoded <code>p_signature</code>
      * @return          The <code>byte[]</code> containing the signature
      */
     public byte[] getEncodedPSignature(TreeMap<String, String> postData) {
