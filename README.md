@@ -33,7 +33,7 @@ implementation 'com.jamiussiam:paddle-verifier:1.0'
 
 #### Jar File
 You can download the ***.jar** file from release.  
-Paddle Verifier has `Bouncy Castle Provider` as a dependency. Add it from [Maven Central](https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on/1.65)
+Paddle Verifier has `Bouncy Castle Provider` as a dependency. Add it from [Maven Central.](https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on/1.65)
 
 <br/>
 
