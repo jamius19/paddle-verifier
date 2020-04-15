@@ -28,7 +28,7 @@ Include it in your Maven projects.
 #### Gradle
 Include it in your Gradle projects.
 ```groovy
-implementation 'com.jamiussiam:paddle-verifier:1.0'
+implementation 'com.jamiussiam:paddle-verifier:2.0'
 ```
 
 #### Jar File
@@ -57,14 +57,8 @@ boolean isValid = verifier.verifyDataWithSignature(postBody);
 
 
 ### Detailed Guide
-#### Method Parameters
-`postBody` is your POST data from Paddle webhook and it should be in this format,
-```http request
-alert_id=1688369608&balance_currency=GBP&balance_earnings=438.94&balance_fee=689.32  ....
-```
-It should contain `p_signature` key. The key value pairs should be separated by `&` and the post body should be [URL Encoded.](https://en.wikipedia.org/wiki/Percent-encoding) (Paddle does this by dafault)
 
----
+#### Constructor Parameter
 
 `publicKey` is quite self explanatory, it's the `String` representation of your public key. For example,
 ```java
@@ -74,7 +68,16 @@ String publicKey =  "-----BEGIN PUBLIC KEY-----\n" +
                     "-----END PUBLIC KEY-----\n";
 ```
 
+#### Method Parameter
+
+`postBody` is your POST data from Paddle webhook and it should be in this format,
+```http request
+alert_id=1688369608&balance_currency=GBP&balance_earnings=438.94&balance_fee=689.32  ....
+```
+It should contain `p_signature` key. The key value pairs should be separated by `&` and the post body should be [URL Encoded.](https://en.wikipedia.org/wiki/Percent-encoding) (Paddle does this by dafault)
+
 <br/>
+
 
 #### Spring Boot
 In spring boot, you can define the bean by,
