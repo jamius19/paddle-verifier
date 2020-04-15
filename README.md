@@ -4,12 +4,12 @@
 
 ## Paddle Webhook Verifier
 
-[![Version badge](https://img.shields.io/badge/Maven%20Central-1.0-blue.svg)](https://search.maven.org/artifact/com.jamiussiam/paddle-verifier/1.0/jar) [![Build Status](https://travis-ci.com/jamius19/paddle-verifier.svg?branch=master)](https://travis-ci.com/jamius19/paddle-verifier) [![Codecov Status](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg)](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jamius19/paddle-verifier/issues)   [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jamius19/paddle-verifier/blob/master/LICENSE)
+[![Version badge](https://img.shields.io/badge/Maven%20Central-1.0-blue.svg)](https://search.maven.org/artifact/com.jamiussiam/paddle-verifier/1.0/jar) [![Build Status](https://travis-ci.com/jamius19/paddle-verifier.svg?branch=master)](https://travis-ci.com/jamius19/paddle-verifier) [![Codecov Status](https://codecov.io/gh/jamius19/paddle-verifier/branch/master/graph/badge.svg)](https://codecov.io/gh/jamius19/paddle-verifier) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jamius19/paddle-verifier/issues)   [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jamius19/paddle-verifier/blob/master/LICENSE)
 <br/>
 
 ### What is it?
 
-It's a small utility library for verifying paddle webhooks via Public key and given signature. Paddle is an online payment gateway and more details about verifying paddle webhooks can be found [on their official documentation.](https://developer.paddle.com/webhook-reference/verifying-webhooks)
+A small utility library (without any external dependecies) for verifying paddle webhooks via Public key and given signature. Paddle is an online payment gateway and more details about verifying paddle webhooks can be found [on their official documentation.](https://developer.paddle.com/webhook-reference/verifying-webhooks)
 
 <br/>
 
@@ -21,7 +21,7 @@ Include it in your Maven projects.
 <dependency>
   <groupId>com.jamiussiam</groupId>
   <artifactId>paddle-verifier</artifactId>
-  <version>1.0</version>
+  <version>2.0</version>
 </dependency>
 ```
   
@@ -33,7 +33,6 @@ implementation 'com.jamiussiam:paddle-verifier:1.0'
 
 #### Jar File
 You can download the ***.jar** file from release.  
-Paddle Verifier has `Bouncy Castle Provider` as a dependency. Add it from [Maven Central.](https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on/1.65)
 
 <br/>
 
@@ -51,8 +50,8 @@ Then use it as shown,
 String publicKey;
 String postBody;
 
-Verifier verifier = new Verifier();
-boolean isValid = verifier.verifyDataWithSignature(postBody, publicKey);
+Verifier verifier = new Verifier(publicKey);
+boolean isValid = verifier.verifyDataWithSignature(postBody);
 ```
 <br/>
 
@@ -80,9 +79,11 @@ String publicKey =  "-----BEGIN PUBLIC KEY-----\n" +
 #### Spring Boot
 In spring boot, you can define the bean by,
 ```java
+String publicKey;
+
 @Bean
 public Verifier getVerifier() {
-    return new Verifier();
+    return new Verifier(publicKey);
 }
 ```
 
@@ -99,7 +100,7 @@ Finally, you can use it to verify incoming requests from Paddle,
 private boolean webhook(HttpEntity<String> httpEntity) {
 
     // Get the validity staus of the request
-    boolean isValid = verifier.verifyDataWithSignature(httpEntity.getBody(), publicKey);
+    boolean isValid = verifier.verifyDataWithSignature(httpEntity.getBody());
 
     // Log the result
     logger.info("Webhook verification: {}", isValid);
