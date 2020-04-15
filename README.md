@@ -4,7 +4,7 @@
 
 ## Paddle Webhook Verifier
 
-[![Version badge](https://img.shields.io/badge/Maven%20Central-1.0-blue.svg)](https://search.maven.org/artifact/com.jamiussiam/paddle-verifier/1.0/jar) [![Build Status](https://travis-ci.com/jamius19/paddle-verifier.svg?branch=master)](https://travis-ci.com/jamius19/paddle-verifier)  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jamius19_paddle-verifier&metric=alert_status)](https://sonarcloud.io/dashboard?id=jamius19_paddle-verifier)  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jamius19_paddle-verifier&metric=coverage)](https://sonarcloud.io/dashboard?id=jamius19_paddle-verifier)  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jamius19_paddle-verifier&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jamius19_paddle-verifier) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=jamius19_paddle-verifier&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=jamius19_paddle-verifier) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jamius19/paddle-verifier/blob/master/LICENSE)
+[![Version badge](https://img.shields.io/badge/Maven%20Central-2.1-blue.svg)](https://search.maven.org/artifact/com.jamiussiam/paddle-verifier/1.0/jar) [![Build Status](https://travis-ci.com/jamius19/paddle-verifier.svg?branch=master)](https://travis-ci.com/jamius19/paddle-verifier)  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jamius19_paddle-verifier&metric=alert_status)](https://sonarcloud.io/dashboard?id=jamius19_paddle-verifier)  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jamius19_paddle-verifier&metric=coverage)](https://sonarcloud.io/dashboard?id=jamius19_paddle-verifier)  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jamius19_paddle-verifier&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jamius19_paddle-verifier) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=jamius19_paddle-verifier&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=jamius19_paddle-verifier) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jamius19/paddle-verifier/blob/master/LICENSE)
 <br/>
 
 ### What is it?
@@ -21,14 +21,14 @@ Include it in your Maven projects.
 <dependency>
   <groupId>com.jamiussiam</groupId>
   <artifactId>paddle-verifier</artifactId>
-  <version>2.0</version>
+  <version>2.1</version>
 </dependency>
 ```
   
 #### Gradle
 Include it in your Gradle projects.
 ```groovy
-implementation 'com.jamiussiam:paddle-verifier:2.0'
+implementation 'com.jamiussiam:paddle-verifier:2.1'
 ```
 
 #### Jar File
