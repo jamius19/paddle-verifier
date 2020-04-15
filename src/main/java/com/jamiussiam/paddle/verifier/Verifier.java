@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * @author Jamius Siam
  */
 public class Verifier {
-    private static String PublicKeyString;
+    private final PublicKey publicKey;
 
     private final SecurityUtils securityUtils;
     private final StringParser stringParser;
@@ -26,9 +26,16 @@ public class Verifier {
      * @param publicKeyString   The Public Key
      */
     public Verifier(String publicKeyString) {
-        Verifier.PublicKeyString = publicKeyString;
+
         securityUtils = new SecurityUtils();
         stringParser = new StringParser();
+
+        try {
+            this.publicKey = securityUtils.getPublicKey(publicKeyString);
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Invalid Public Key Given");
+        }
     }
 
     /**
@@ -53,7 +60,7 @@ public class Verifier {
         TreeMap<String, String> postData = getSortedMapFromBody(postBody);
 
         // Get the p_signature
-        byte[] p_signature = securityUtils.getEncodedPSignature(postData);
+        byte[] pSignatureEncoded = securityUtils.getEncodedPSignature(postData);
 
         // Remove the p_signature from postData
         postData.remove("p_signature");
@@ -63,23 +70,13 @@ public class Verifier {
         String serializedString = stringParser.serialize(postData);
 
 
-        // Get the public key from String
-        PublicKey publicKey;
-
-        try {
-            publicKey = securityUtils.getPublicKey(PublicKeyString);
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();
-            throw new IllegalArgumentException("Invalid Public Key given.");
-        }
-
         // Verify the data
         try {
             Signature signer = Signature.getInstance("SHA1withRSA");
             signer.initVerify(publicKey);
             signer.update(serializedString.getBytes());
 
-            isVerified = signer.verify(p_signature);
+            isVerified = signer.verify(pSignatureEncoded);
         } catch (Exception e) {
             isVerified = false;
             e.printStackTrace();

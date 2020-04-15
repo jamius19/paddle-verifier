@@ -48,10 +48,10 @@ class VerifierTest {
     @Test
     void verifyDataWithSignatureInvalidPublicKey() {
         String invalidPublicKeyString = VerifierTest.publicKeyString.replace("a", "bdf");
-        Verifier verifier = new Verifier(invalidPublicKeyString);
+        ;
 
-        IllegalArgumentException argumentException = assertThrows(IllegalArgumentException.class,
-                () -> verifier.verifyDataWithSignature(postBody));
+        assertThrows(IllegalArgumentException.class,
+                () -> new Verifier(invalidPublicKeyString));
     }
 
     @Test
