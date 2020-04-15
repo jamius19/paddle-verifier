@@ -105,9 +105,6 @@ private boolean webhook(HttpEntity<String> httpEntity) {
     // Get the validity staus of the request
     boolean isValid = verifier.verifyDataWithSignature(httpEntity.getBody());
 
-    // Log the result
-    logger.info("Webhook verification: {}", isValid);
-    
     if (isValid) {
         // ... your logic goes here
     }
