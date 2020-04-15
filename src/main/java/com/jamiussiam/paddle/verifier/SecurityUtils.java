@@ -10,8 +10,8 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.TreeMap;
 
-import org.bouncycastle.util.encoders.Base64;
-
+//import org.bouncycastle.util.encoders.Base64;
+import java.util.Base64;
 
 public class SecurityUtils {
 
@@ -28,7 +28,7 @@ public class SecurityUtils {
                 .replace("-----END PUBLIC KEY-----", "");
 
         try {
-            byte[] byteKey = Base64.decode(publicKeyString);
+            byte[] byteKey = Base64.getMimeDecoder().decode(publicKeyString);
             X509EncodedKeySpec X509publicKey = new X509EncodedKeySpec(byteKey);
             KeyFactory kf = KeyFactory.getInstance("RSA");
 
@@ -54,7 +54,7 @@ public class SecurityUtils {
         // Decodes the signature
         p_signature = URLDecoder.decode(p_signature, StandardCharsets.UTF_8);
 
-        return Base64.decode(p_signature);
+        return Base64.getDecoder().decode(p_signature);
     }
 
 }

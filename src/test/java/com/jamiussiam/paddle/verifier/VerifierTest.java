@@ -31,42 +31,42 @@ class VerifierTest {
     }
 
     @Test
-    void verifyDataWithSignature() {
-        Verifier verifier = new Verifier();
-        assertTrue(verifier.verifyDataWithSignature(postBody, publicKeyString));
+    void verifyDataWithSignatureWithValidSignature() {
+        Verifier verifier = new Verifier(publicKeyString);
+        assertTrue(verifier.verifyDataWithSignature(postBody));
     }
 
     @Test
     void verifyDataWithSignatureInvalidPostBody() {
-        Verifier verifier = new Verifier();
+        Verifier verifier = new Verifier(publicKeyString);
         String postBody = VerifierTest.postBody.replace("&", "b");
 
         IllegalArgumentException argumentException = assertThrows(IllegalArgumentException.class,
-                () -> verifier.verifyDataWithSignature(postBody, publicKeyString));
+                () -> verifier.verifyDataWithSignature(postBody));
     }
 
     @Test
     void verifyDataWithSignatureInvalidPublicKey() {
-        Verifier verifier = new Verifier();
-        String publicKey = VerifierTest.publicKeyString.replace("a", "bdf");
+        String invalidPublicKeyString = VerifierTest.publicKeyString.replace("a", "bdf");
+        Verifier verifier = new Verifier(invalidPublicKeyString);
 
         IllegalArgumentException argumentException = assertThrows(IllegalArgumentException.class,
-                () -> verifier.verifyDataWithSignature(postBody, publicKey));
+                () -> verifier.verifyDataWithSignature(postBody));
     }
 
     @Test
     void verifyDataWithSignatureInvalidSignature() {
-        Verifier verifier = new Verifier();
+        Verifier verifier = new Verifier(publicKeyString);
         String postBody = VerifierTest.postBody.replace("T", "bva12");
 
-        assertFalse(verifier.verifyDataWithSignature(postBody, publicKeyString));
+        assertFalse(verifier.verifyDataWithSignature(postBody));
     }
 
     void verifyDataWithSignatureWithoutSignature() {
-        Verifier verifier = new Verifier();
+        Verifier verifier = new Verifier(publicKeyString);
         String postBody = VerifierTest.postBody.replace("p_signature", "no_signature");
 
         IllegalArgumentException argumentException = assertThrows(IllegalArgumentException.class,
-                () -> verifier.verifyDataWithSignature(postBody, publicKeyString));
+                () -> verifier.verifyDataWithSignature(postBody));
     }
 }

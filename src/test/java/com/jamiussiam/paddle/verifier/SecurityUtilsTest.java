@@ -1,12 +1,12 @@
 package com.jamiussiam.paddle.verifier;
 
-import org.bouncycastle.util.encoders.Base64;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,7 +42,7 @@ class SecurityUtilsTest {
     void getPublicKey() throws InvalidKeySpecException {
         PublicKey publicKey = securityUtils.getPublicKey(publicKeyString);
         byte[] base = publicKey.getEncoded();
-        byte[] original = Base64.encode(base);
+        byte[] original = Base64.getEncoder().encode(base);
 
         String publicKeyStringRemoved = publicKeyString
                 .replace("-----BEGIN PUBLIC KEY-----\n", "")

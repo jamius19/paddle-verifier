@@ -16,11 +16,17 @@ import java.util.regex.Pattern;
  * @author Jamius Siam
  */
 public class Verifier {
+    private static String PublicKeyString;
 
     private final SecurityUtils securityUtils;
     private final StringParser stringParser;
 
-    public Verifier() {
+    /**
+     * Creates a verifier instance from given Public Key
+     * @param publicKeyString   The Public Key
+     */
+    public Verifier(String publicKeyString) {
+        Verifier.PublicKeyString = publicKeyString;
         securityUtils = new SecurityUtils();
         stringParser = new StringParser();
     }
@@ -31,12 +37,11 @@ public class Verifier {
      * field must be present inside the <code>postBody</code> string.
      *
      * @param postBody            The body of the POST request sent from Paddle.
-     * @param publicKeyString     Your public key obtained from Paddle dashboard.
      * @return                    Returns true is data is valid.
      *
      * @throws IllegalArgumentException     It is thrown if the data is not a valid POST body.
      */
-    public boolean verifyDataWithSignature(String postBody, String publicKeyString) {
+    public boolean verifyDataWithSignature(String postBody) {
         boolean isVerified = verifyInputData(postBody);
 
         // If data isn't a valid post body we throw an exception.
@@ -62,7 +67,7 @@ public class Verifier {
         PublicKey publicKey;
 
         try {
-            publicKey = securityUtils.getPublicKey(publicKeyString);
+            publicKey = securityUtils.getPublicKey(PublicKeyString);
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
             throw new IllegalArgumentException("Invalid Public Key given.");
