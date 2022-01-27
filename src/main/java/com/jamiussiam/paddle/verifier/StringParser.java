@@ -39,6 +39,6 @@ public class StringParser {
      * Generates the inner values for serialization
      */
     private String generateInnerValues(String val) {
-        return String.format("s:%d:\"%s\";", val.length(), val);
+        return String.format("s:%d:\"%s\";", val.getBytes(StandardCharsets.UTF_8).length, val);
     }
 }
