@@ -1,5 +1,6 @@
 package com.jamiussiam.paddle.verifier;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
@@ -22,11 +23,16 @@ public class StringParser {
         serializedString.append("a:").append(value.size()).append(":{");
 
         value.forEach((key, val) -> {
-            // Escape urls
-            String valEscaped = URLDecoder.decode(val, StandardCharsets.UTF_8);
+            try {
+                // Escape urls
+                String valEscaped = URLDecoder.decode(val, StandardCharsets.UTF_8.name());
+                serializedString.append(generateInnerValues(key));
+                serializedString.append(generateInnerValues(valEscaped));
 
-            serializedString.append(generateInnerValues(key));
-            serializedString.append(generateInnerValues(valEscaped));
+            } catch (UnsupportedEncodingException e) {
+                System.err.println("Invalid Charset given.");
+                e.printStackTrace();
+            }
         });
 
         serializedString.append("}");
