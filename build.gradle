@@ -21,7 +21,7 @@ apply plugin: 'jacoco'
 
 archivesBaseName = 'paddle-verifier'
 group = "com.jamiussiam"
-version = "2.1"
+version = "2.2"
 
 modifyPom {
     //noinspection GroovyAssignabilityCheck
