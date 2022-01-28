@@ -1,6 +1,7 @@
 package com.jamiussiam.paddle.verifier;
 
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyFactory;
@@ -16,7 +17,7 @@ import java.util.Base64;
 public class SecurityUtils {
 
     /**
-     * Contruts a {@link PublicKey} from a {@link String}
+     * Construts a {@link PublicKey} from a {@link String}
      *
      * @param publicKeyString   The string to be converted.
      * @return                  The constructed {@link PublicKey}
@@ -52,7 +53,12 @@ public class SecurityUtils {
         String pSignature = postData.get("p_signature");
 
         // Decodes the signature
-        pSignature = URLDecoder.decode(pSignature, StandardCharsets.UTF_8);
+        try {
+            pSignature = URLDecoder.decode(pSignature, StandardCharsets.UTF_8.name());
+        } catch (UnsupportedEncodingException e) {
+            System.err.println("Invalid Charset given.");
+            e.printStackTrace();
+        }
 
         return Base64.getDecoder().decode(pSignature);
     }
