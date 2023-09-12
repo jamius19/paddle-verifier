@@ -21,14 +21,14 @@ Include it in your Maven projects.
 <dependency>
   <groupId>com.jamiussiam</groupId>
   <artifactId>paddle-verifier</artifactId>
-  <version>2.2</version>
+  <version>2.1</version>
 </dependency>
 ```
   
 #### Gradle
 Include it in your Gradle projects.
 ```groovy
-implementation 'com.jamiussiam:paddle-verifier:2.2'
+implementation 'com.jamiussiam:paddle-verifier:2.1'
 ```
 
 #### Jar File
