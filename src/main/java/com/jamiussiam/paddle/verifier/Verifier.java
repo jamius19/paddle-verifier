@@ -1,5 +1,6 @@
 package com.jamiussiam.paddle.verifier;
 
+import java.nio.charset.StandardCharsets;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.InvalidKeySpecException;
@@ -74,7 +75,7 @@ public class Verifier {
         try {
             Signature signer = Signature.getInstance("SHA1withRSA");
             signer.initVerify(publicKey);
-            signer.update(serializedString.getBytes());
+            signer.update(serializedString.getBytes(StandardCharsets.UTF_8));
 
             isVerified = signer.verify(pSignatureEncoded);
         } catch (Exception e) {
