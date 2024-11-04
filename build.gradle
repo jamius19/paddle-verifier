@@ -1,7 +1,76 @@
-plugins{
+plugins {
     id 'jacoco'
     id 'java'
+    id 'maven-publish'
+    id 'org.jreleaser' version '1.15.0'
 }
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.jamiussiam'
+            artifactId = 'paddle-verifier'
+
+            from components.java
+
+            pom {
+                name = 'paddle-verifier'
+                description = 'A lighweight Paddle.com webhook verification library for Java.'
+                url = 'https://github.com/jamius19/paddle-verifier'
+                inceptionYear = '2020'
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'https://spdx.org/licenses/MIT.html'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'jamius19'
+                        name = 'Jamius Siam'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/jamius19/paddle-verifier.git'
+                    developerConnection = 'scm:git:ssh://github.com/jamius19/paddle-verifier.git'
+                    url = 'https://github.com/jamius19/paddle-verifier'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = layout.buildDirectory.dir('staging-deploy')
+        }
+    }
+}
+
+jreleaser {
+    signing {
+        active = 'ALWAYS'
+        armored = true
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                sonatype {
+                    active = 'ALWAYS'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    stagingRepository('build/staging-deploy')
+                }
+            }
+        }
+    }
+}
+
+group = "com.jamiussiam"
+version = "2.2"
 
 compileJava {
     sourceCompatibility = JavaVersion.VERSION_1_8

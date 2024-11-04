@@ -19,16 +19,16 @@ A small utility library (without any external dependecies) for verifying paddle 
 Include it in your Maven projects.
 ```xml
 <dependency>
-  <groupId>com.jamiussiam</groupId>
-  <artifactId>paddle-verifier</artifactId>
-  <version>2.1</version>
+    <groupId>com.jamiussiam</groupId>
+    <artifactId>paddle-verifier</artifactId>
+    <version>2.2</version>
 </dependency>
 ```
   
 #### Gradle
 Include it in your Gradle projects.
 ```groovy
-implementation 'com.jamiussiam:paddle-verifier:2.1'
+implementation 'com.jamiussiam:paddle-verifier:2.2'
 ```
 
 #### Jar File
