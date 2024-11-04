@@ -4,7 +4,7 @@
 
 ## Paddle Webhook Verifier
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.jamiussiam/paddle-verifier.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.jamiussiam%22%20AND%20a:%22paddle-verifier%22) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jamius19/paddle-verifier/blob/master/LICENSE)
+[![Maven Central](https://img.shields.io/maven-central/v/com.jamiussiam/paddle-verifier.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.jamiussiam%22%20AND%20a:%22paddle-verifier%22) [![codecov](https://codecov.io/github/jamius19/paddle-verifier/graph/badge.svg?token=GAGKYUP12G)](https://codecov.io/github/jamius19/paddle-verifier) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jamius19/paddle-verifier/blob/master/LICENSE)
 <br/>
 
 ### What is it?
