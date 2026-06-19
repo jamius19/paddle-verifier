@@ -1,4 +1,4 @@
-![Paddle Verifier Logo](https://cdn.jsdelivr.net/gh/jamius19/paddle-verifier/img/logo.svg)
+![Paddle Verifier Logo](https://raw.githubusercontent.com/jamius19/paddle-verifier/refs/heads/main/img/logo.svg)
 
 
 
